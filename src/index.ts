@@ -1,3 +1,9 @@
 import express from 'express'
 
-console.log('Hola mundo')
+const app = express()
+
+app.use(express.json())
+
+app.listen(3000, () => {
+    console.log('Arrancando')
+})
