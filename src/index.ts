@@ -1,9 +1,9 @@
-import express from 'express'
+import { Server } from 'infraestructure/driving-adapters/api-rest/rest-server'
 
-const app = express()
+const bootstrap = async () => {
+    const server = new Server('3000')
 
-app.use(express.json())
+    await server.listen()
+}
 
-app.listen(3000, () => {
-    console.log('Arrancando')
-})
+bootstrap()
