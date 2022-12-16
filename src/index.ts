@@ -1,4 +1,4 @@
-import { Server } from 'infraestructure/driving-adapters/api-rest/rest-server'
+import { Server } from './infraestructure/driving-adapters/api-rest/server'
 
 const bootstrap = async () => {
     const server = new Server('3000')
