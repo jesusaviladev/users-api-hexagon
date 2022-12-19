@@ -1,10 +1,13 @@
 import { NextFunction, Request, Response, Router } from 'express'
+import usersRouter from './users.routes'
 
 const router = Router()
 
-router.use('/', (req, res) => {
+router.get('/', (req, res) => {
     return res.status(200).send('OK!')
 })
+
+router.use('/api/users', usersRouter)
 
 router.use((req, res, next) => {
     return res.status(404).json({
@@ -13,8 +16,9 @@ router.use((req, res, next) => {
 })
 
 router.use((error: Error, req: Request, res: Response, next: NextFunction) => {
+    console.log(error)
     return res.status(500).json({
-        error: 'Interal server error',
+        error: 'Internal server error',
     })
 })
 

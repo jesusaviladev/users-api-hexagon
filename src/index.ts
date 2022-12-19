@@ -1,9 +1,3 @@
-import { Server } from './infraestructure/driving-adapters/api-rest/server'
-
-const bootstrap = async () => {
-    const server = new Server('3000')
-
-    await server.listen()
-}
+import bootstrap from './infraestructure/driving-adapters/api-rest/bootstrap'
 
 bootstrap()
