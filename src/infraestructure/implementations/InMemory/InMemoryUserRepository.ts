@@ -28,12 +28,10 @@ export class InMemoryUserRepository implements UserRepository {
         return user
     }
 
-    async update(user: User): Promise<User | null> {
+    async update(user: User): Promise<User> {
         const editedUserIndex = this.userData.findIndex(
             (userInBD) => userInBD.id === user.id
         )
-
-        if (editedUserIndex === -1) return null
 
         this.userData[editedUserIndex] = user
 
