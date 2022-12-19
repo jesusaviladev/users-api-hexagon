@@ -1,9 +1,9 @@
 import { Router } from 'express'
-import { createUser } from '../controllers/users.controller'
+import { createUser, getUsers } from '../controllers/users.controller'
 
 const usersRouter = Router()
 
-usersRouter.get('/', () => {})
+usersRouter.get('/', getUsers)
 
 usersRouter.post('/', createUser)
 
