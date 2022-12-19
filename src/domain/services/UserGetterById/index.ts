@@ -1,5 +1,5 @@
 import { User } from 'domain/entities/User'
-import { UserNotFoundException } from 'domain/exceptions/UserNotFoundException'
+import { UserNotFoundException } from '../../../domain/exceptions/UserNotFoundException'
 import { UserRepository } from 'domain/repositories/UserRepository'
 
 export class UserGetterById {

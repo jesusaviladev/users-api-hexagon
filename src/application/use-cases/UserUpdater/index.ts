@@ -1,6 +1,6 @@
 import { User } from 'domain/entities/User'
-import { UserRepository } from 'domain/repositories/UserRepository'
-import { UserGetterById } from 'domain/services/UserGetterById'
+import { UserRepository } from '../../../domain/repositories/UserRepository'
+import { UserGetterById } from '../../../domain/services/UserGetterById'
 
 export class UserUpdaterUseCase {
     private readonly _userRepository: UserRepository
@@ -12,9 +12,9 @@ export class UserUpdaterUseCase {
     }
 
     async run(body: User): Promise<User> {
-        const user = this._findUserById.run(body.id)
+        const user = await this._findUserById.run(body.id)
 
-        const dataToUpdate = {
+        const dataToUpdate: User = {
             ...user,
             ...body,
         }
