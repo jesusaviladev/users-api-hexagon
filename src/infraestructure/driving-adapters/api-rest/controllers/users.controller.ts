@@ -4,10 +4,11 @@ import { randomUUID } from 'crypto'
 import { UserCreatorUseCase } from '../../../../application/use-cases/UserCreator/index'
 import { UserGetterUseCase } from '../../../../application/use-cases/UserGet'
 import { UserUpdaterUseCase } from '../../../../application/use-cases/UserUpdater'
-import { InMemoryUserRepository } from '../../../../infraestructure/implementations/InMemory/InMemoryUserRepository'
+// import { InMemoryUserRepository } from '../../../../infraestructure/implementations/InMemory/InMemoryUserRepository'
+import { MongoDBUserRepository } from '../../../../infraestructure/implementations/Mongodb/MongoDBUserRepository'
 import { UserDeleter } from '../../../../application/use-cases/UserDeleter'
 
-const userRepository = new InMemoryUserRepository()
+const userRepository = new MongoDBUserRepository()
 
 export const getUsers = async (
     req: Request,
