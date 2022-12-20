@@ -50,7 +50,12 @@ export class MongoDBUserRepository implements UserRepository {
     }
 
     async save(user: User) {
-        const newUser = new this._model(user)
+        const newUser = new this._model({
+            _id: user.id,
+            username: user.username,
+            name: user.name,
+            age: user.age,
+        })
 
         await newUser.save()
 
