@@ -5,6 +5,7 @@ import { UserCreatorUseCase } from '../../../../application/use-cases/UserCreato
 import { UserGetterUseCase } from '../../../../application/use-cases/UserGet'
 import { UserUpdaterUseCase } from '../../../../application/use-cases/UserUpdater'
 import { InMemoryUserRepository } from '../../../../infraestructure/implementations/InMemory/InMemoryUserRepository'
+import { UserDeleter } from '../../../../application/use-cases/UserDeleter'
 
 const userRepository = new InMemoryUserRepository()
 
@@ -60,6 +61,23 @@ export const editUser = async (
         const updatedUser = await userUpdater.run(data)
 
         return res.status(200).json(updatedUser)
+    } catch (error) {
+        next(error)
+    }
+}
+export const deleteUser = async (
+    req: Request,
+    res: Response,
+    next: NextFunction
+) => {
+    try {
+        const { userId } = req.params
+
+        const userDeleter = new UserDeleter(userRepository)
+
+        await userDeleter.run(userId)
+
+        return res.status(204).end()
     } catch (error) {
         next(error)
     }

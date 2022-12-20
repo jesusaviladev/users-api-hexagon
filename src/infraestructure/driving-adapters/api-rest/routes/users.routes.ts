@@ -1,5 +1,10 @@
 import { Router } from 'express'
-import { createUser, editUser, getUsers } from '../controllers/users.controller'
+import {
+    createUser,
+    deleteUser,
+    editUser,
+    getUsers,
+} from '../controllers/users.controller'
 
 const usersRouter = Router()
 
@@ -9,6 +14,6 @@ usersRouter.post('/', createUser)
 
 usersRouter.patch('/', editUser)
 
-usersRouter.delete('/', () => {})
+usersRouter.delete('/:userId', deleteUser)
 
 export default usersRouter

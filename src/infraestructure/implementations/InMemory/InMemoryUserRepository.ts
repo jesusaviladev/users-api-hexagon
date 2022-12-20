@@ -2,7 +2,7 @@ import { User } from 'domain/entities/User'
 import { UserRepository } from 'domain/repositories/UserRepository'
 
 export class InMemoryUserRepository implements UserRepository {
-    private readonly userData: User[] = []
+    private userData: User[] = []
 
     async getAll(): Promise<User[]> {
         return this.userData
@@ -38,5 +38,7 @@ export class InMemoryUserRepository implements UserRepository {
         return user
     }
 
-    async delete(userId: string): Promise<void> {}
+    async delete(userId: string): Promise<void> {
+        this.userData = this.userData.filter((user) => user.id !== userId)
+    }
 }

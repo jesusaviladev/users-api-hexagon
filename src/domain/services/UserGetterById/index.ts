@@ -9,7 +9,7 @@ export class UserGetterById {
         this._userRepository = userRepository
     }
 
-    async run(UserId: string): Promise<User | null> {
+    async run(UserId: string): Promise<User> {
         const user = await this._userRepository.getById(UserId)
 
         if (!user) throw new UserNotFoundException()
