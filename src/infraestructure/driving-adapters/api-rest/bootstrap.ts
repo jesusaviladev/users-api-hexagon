@@ -3,7 +3,7 @@ import { Server } from './Server'
 
 const bootstrap = async () => {
     try {
-        const server = new Server(process.env.PORT ?? '5000')
+        const server = new Server(process.env.PORT ?? '3001')
 
         await server.listen()
     } catch (error) {
