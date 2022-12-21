@@ -1,6 +1,6 @@
 import express from 'express'
+import expressApp from './config/expressApp'
 import * as http from 'http'
-import router from './routes/index'
 
 export class Server {
     private readonly _port: string
@@ -9,9 +9,7 @@ export class Server {
 
     constructor(port: string) {
         this._port = port
-        this._app = express()
-        this._app.use(express.json())
-        this._app.use(router)
+        this._app = expressApp
 
         this._httpServer = http.createServer(this._app)
     }
