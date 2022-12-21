@@ -4,9 +4,10 @@ import { randomUUID } from 'crypto'
 import { UserCreatorUseCase } from '../../../../application/use-cases/UserCreator/index'
 import { UserGetterUseCase } from '../../../../application/use-cases/UserGet'
 import { UserUpdaterUseCase } from '../../../../application/use-cases/UserUpdater'
-// import { InMemoryUserRepository } from '../../../../infraestructure/implementations/InMemory/InMemoryUserRepository'
+import { UserDeleterUseCase } from '../../../../application/use-cases/UserDeleter'
 import { MongoDBUserRepository } from '../../../../infraestructure/implementations/Mongodb/MongoDBUserRepository'
-import { UserDeleter } from '../../../../application/use-cases/UserDeleter'
+
+// import { InMemoryUserRepository } from '../../../../infraestructure/implementations/InMemory/InMemoryUserRepository'
 
 const userRepository = new MongoDBUserRepository()
 
@@ -74,7 +75,7 @@ export const deleteUser = async (
     try {
         const { userId } = req.params
 
-        const userDeleter = new UserDeleter(userRepository)
+        const userDeleter = new UserDeleterUseCase(userRepository)
 
         await userDeleter.run(userId)
 

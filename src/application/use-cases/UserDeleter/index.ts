@@ -1,7 +1,7 @@
 import { UserRepository } from 'domain/repositories/UserRepository'
 import { UserGetterById } from '../../../domain/services/UserGetterById'
 
-export class UserDeleter {
+export class UserDeleterUseCase {
     private readonly _userRepository: UserRepository
     private readonly _findUserById: UserGetterById
 
