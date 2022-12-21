@@ -1,6 +1,8 @@
 import { User } from 'domain/entities/User'
 import { UserRepository } from 'domain/repositories/UserRepository'
-import UserModel, { IUserModel } from './schemas/user.schema'
+import UserModel, {
+    IUserModel,
+} from '../../driven-adapters/Mongodb/schemas/user.schema'
 import mongoose from 'mongoose'
 
 export class MongoDBUserRepository implements UserRepository {
