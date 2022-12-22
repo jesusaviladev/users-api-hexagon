@@ -1,19 +1,15 @@
 import path from 'path'
-import { readFileSync, readdirSync } from 'fs'
+import { mergeResolvers, mergeTypeDefs } from '@graphql-tools/merge'
 import { makeExecutableSchema } from '@graphql-tools/schema'
+import { loadFilesSync } from '@graphql-tools/load-files'
 
-const gqlFiles = readdirSync(path.join(__dirname, './typedefs'))
+const gqlFiles = loadFilesSync(path.join(__dirname, './typedefs'))
+const resolverFiles = loadFilesSync(path.join(__dirname, './resolvers'))
 
-let typeDefs = ''
+const typeDefs = mergeTypeDefs(gqlFiles)
+const resolvers = mergeResolvers(resolverFiles)
 
-console.log(__dirname)
-
-gqlFiles.forEach((file) => {
-    typeDefs += readFileSync(path.join(__dirname, './typedefs', file), {
-        encoding: 'utf-8',
-    })
+export const schema = makeExecutableSchema({
+    typeDefs,
+    resolvers,
 })
-
-console.log(typeDefs)
-
-const schema = makeExecutableSchema({ typeDefs, resolvers })

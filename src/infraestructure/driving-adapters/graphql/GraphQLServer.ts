@@ -1,5 +1,6 @@
 import { ApolloServer } from '@apollo/server'
 import { startStandaloneServer } from '@apollo/server/standalone'
+import { schema } from './schemas'
 
 export class GraphQLServer {
     private readonly _port: string
@@ -7,8 +8,7 @@ export class GraphQLServer {
 
     constructor(port: string) {
         this._apolloServer = new ApolloServer({
-            typeDefs,
-            resolvers,
+            schema,
         })
         this._port = port
     }

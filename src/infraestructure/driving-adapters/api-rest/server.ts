@@ -14,7 +14,7 @@ export class Server {
         this._httpServer = http.createServer(this._app)
     }
 
-    async listen(): Promise<void> {
+    async start(): Promise<void> {
         return new Promise((resolve, reject) => {
             this._httpServer.listen(this._port, () => {
                 console.log(`Server started at port: ${this._port}`)
