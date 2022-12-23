@@ -5,6 +5,12 @@ type User {
     age: Int!
 }
 
+input UserCreateInput {
+    name: String!
+    username: String!
+    age: Int!
+}
+
 input UserInput {
     id: ID!
     name: String!

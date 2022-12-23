@@ -1,10 +1,9 @@
 type Query {
     getUsers: [User]!
-    getUser: User!
 }
 
 type Mutation {
-    createUser(user: UserInput!): User!
+    createUser(user: UserCreateInput!): User!
     editUser(user: UserInput!): User!
     deleteUser(userId: ID!): ID!
 }

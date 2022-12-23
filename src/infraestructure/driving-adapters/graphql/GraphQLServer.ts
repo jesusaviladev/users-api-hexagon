@@ -9,6 +9,7 @@ export class GraphQLServer {
     constructor(port: string) {
         this._apolloServer = new ApolloServer({
             schema,
+            includeStacktraceInErrorResponses: false,
         })
         this._port = port
     }
